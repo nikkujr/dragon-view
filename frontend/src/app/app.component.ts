@@ -8,33 +8,31 @@ import { AuthService } from './core/auth.service';
   selector: 'dv-root',
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
   template: `
-    @if (onLoginPage()) {
-      <router-outlet />
-    } @else {
-      <main class="app-shell">
-        <section class="app-viewport">
+    <main class="app-shell">
+      <section class="app-viewport">
         <router-outlet />
-        <nav class="bottom-nav" aria-label="Primary navigation">
-          <div class="nav-brand">
-            <span class="nav-logo">DV</span>
-            <div><strong>DRAGON-VIEW</strong><small>Farm Management</small></div>
-          </div>
-          @for (item of navigation; track item.path) {
-            <a
-              [routerLink]="item.path"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-              [attr.aria-label]="item.label"
-            >
-              <span class="nav-icon" aria-hidden="true">{{ item.icon }}</span>
-              <span>{{ item.label }}</span>
-            </a>
-          }
-          <button class="nav-logout" type="button" (click)="logout()">Sign out</button>
-        </nav>
-        </section>
-      </main>
-    }
+        @if (!onLoginPage()) {
+          <nav class="bottom-nav" aria-label="Primary navigation">
+            <div class="nav-brand">
+              <span class="nav-logo">DV</span>
+              <div><strong>DRAGON-VIEW</strong><small>Farm Management</small></div>
+            </div>
+            @for (item of navigation; track item.path) {
+              <a
+                [routerLink]="item.path"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+                [attr.aria-label]="item.label"
+              >
+                <span class="nav-icon" aria-hidden="true">{{ item.icon }}</span>
+                <span>{{ item.label }}</span>
+              </a>
+            }
+            <button class="nav-logout" type="button" (click)="logout()">Sign out</button>
+          </nav>
+        }
+      </section>
+    </main>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
