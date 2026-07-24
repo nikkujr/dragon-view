@@ -1,0 +1,12 @@
+node_modules/
+.npm-cache/
+dist/
+coverage/
+.angular/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,20 @@
+{
+  "name": "dragon-view",
+  "private": true,
+  "packageManager": "npm@11.12.1",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run start --workspace @dragon-view/frontend",
+    "dev:backend": "npm run dev --workspace @dragon-view/backend",
+    "build": "npm run build --workspace @dragon-view/frontend && npm run build --workspace @dragon-view/backend",
+    "test": "npm run test --workspaces --if-present",
+    "db:migrate": "npm run db:migrate --workspace @dragon-view/backend",
+    "db:migrate:down": "npm run db:migrate:down --workspace @dragon-view/backend",
+    "db:migrate:status": "npm run db:migrate:status --workspace @dragon-view/backend",
+    "db:seed": "npm run db:seed --workspace @dragon-view/backend",
+    "db:setup": "npm run db:migrate && npm run db:seed"
+  }
+}
